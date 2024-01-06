@@ -20,6 +20,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/cars-by-category/{id}', [HomeController::class, 'carsByCategory']);
+Route::get('/cars-by-category/{id}/search', [HomeController::class, 'search']);
 
 Route::get('/sign-in', [AuthenticateController::class, 'signIn'])->name('sign-in');
 Route::post('/login', [AuthenticateController::class, 'login'])->name('login');
@@ -28,8 +29,13 @@ Route::post('/register', [AuthenticateController::class, 'register'])->name('reg
 Route::post('/logout', [AuthenticateController::class, 'logout'])->name('logout');
 
 
+Route::middleware(['auth.check:web'])->group(function () {
+    Route::post('/book-car/{id}', [HomeController::class, 'bookCar']);
+});
+
 Route::prefix('admin-dashboard')->group(function () {
     Route::middleware(['auth.check:admin'])->group(function () {
+        Route::get('/', [CarController::class, 'cars']);
         Route::get('/cars', [CarController::class, 'cars']);
         Route::get('/add-car', [CarController::class, 'addCar']);
         Route::post('/store-car', [CarController::class, 'storeCar']);

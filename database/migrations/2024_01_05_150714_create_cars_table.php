@@ -35,6 +35,8 @@ return new class extends Migration
                 ->constrained()
                 ->onDelete('cascade');
 
+            $table->boolean('is_booked')->default(0);
+
             $table->timestamps();
         });
     }

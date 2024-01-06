@@ -14,7 +14,7 @@ class UserController extends Controller
         return view('admin.users.all-users', ['users' => $users]);
     }
 
-    public function deleteCar($id)
+    public function deleteUser($id)
     {
         User::find($id)->delete();
         return redirect('/admin-dashboard/users');

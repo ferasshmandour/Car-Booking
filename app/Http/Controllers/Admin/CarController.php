@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Auth;
 
 class CarController extends Controller
 {
+
+    public function index()
+    {
+        return redirect('/admin-dashboard/cars');
+    }
+
     public function cars()
     {
         $cars = Car::all();

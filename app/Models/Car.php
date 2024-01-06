@@ -11,7 +11,7 @@ class Car extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'manufacturing_year', 'price', 'color', 'photo', 'category_id', 'admin_id', 'user_id'];
+    protected $fillable = ['name', 'manufacturing_year', 'price', 'color', 'photo', 'category_id', 'admin_id', 'user_id', 'is_booked'];
 
     public function user(): BelongsTo
     {
