@@ -1,7 +1,7 @@
 <style>
     .custom-sidebar {
         width: 250px;
-        height: 900px;
+        height: 950px;
         position: fixed;
     }
 </style>
