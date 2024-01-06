@@ -26,16 +26,16 @@ Route::get('/sign-in', [AuthenticateController::class, 'signIn'])->name('sign-in
 Route::post('/login', [AuthenticateController::class, 'login'])->name('login');
 Route::get('/sign-up', [AuthenticateController::class, 'signUp'])->name('sign-up');
 Route::post('/register', [AuthenticateController::class, 'register'])->name('register');
-Route::post('/logout', [AuthenticateController::class, 'logout'])->name('logout');
 
 
 Route::middleware(['auth.check:web'])->group(function () {
     Route::post('/book-car/{id}', [HomeController::class, 'bookCar']);
+    Route::post('/logout', [AuthenticateController::class, 'logout'])->name('logout');
 });
 
 Route::prefix('admin-dashboard')->group(function () {
     Route::middleware(['auth.check:admin'])->group(function () {
-        Route::get('/', [CarController::class, 'cars']);
+        Route::get('/', [CarController::class, 'index']);
         Route::get('/cars', [CarController::class, 'cars']);
         Route::get('/add-car', [CarController::class, 'addCar']);
         Route::post('/store-car', [CarController::class, 'storeCar']);
